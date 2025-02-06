@@ -3,14 +3,31 @@
 
   color-scheme: light;
 
+  --main-layout-horizontal-padding: 2rem;
+
   --color-primary-06: #006FFF;
 
   --color-neutral-02: #F4F5F6;
   --color-neutral-10: #50565E;
+  --color-neutral-08: #EDEDF0;
 
+  --color-text-1: rgba(0, 0, 0, 0.85);
+  --color-text-2: rgba(0, 0, 0, 0.65);
   --color-text-3: #808893;
+  --color-text-4: rgba(0, 0, 0, 0.45);
 }
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

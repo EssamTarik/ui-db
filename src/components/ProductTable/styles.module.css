@@ -1,0 +1,52 @@
+.tableContainer {
+  max-height: 100%;
+  overflow: auto;
+  padding: 0 var(--main-layout-horizontal-padding);
+}
+
+.deviceImage {
+  width: 1.25rem;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+
+  & tr {
+    height: 2rem;
+  }
+}
+
+.tableBody {
+  & tr {
+    border-top: 1px solid var(--color-neutral-08);
+  }
+
+  & td {
+    color: var(--color-text-2);
+  }
+
+  & .deviceNameCol {
+    color: var(--color-text-4);
+  }
+  
+}
+
+.tableHeader {
+  position: sticky;
+  top: 0;
+
+  & th {
+    background-color: white;
+    color: var(--color-text-1);
+    text-align: left;
+    font-weight: 700;
+  }
+}
+
+.deviceImageCol {
+  width: 2.25rem;
+}
