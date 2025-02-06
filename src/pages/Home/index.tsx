@@ -1,7 +1,7 @@
-import ProductTable from "../../components/ProductTable";
+import ProductGrid from "../../components/ProductGrid";
 
 const Home = () => {
-  return <ProductTable />;
+  return <ProductGrid />;
 }
 
 export default Home;
