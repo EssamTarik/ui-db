@@ -1,7 +1,6 @@
 .productGrid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 16px;
   padding: 16px var(--main-layout-horizontal-padding) 0;
   max-height: 100%;
