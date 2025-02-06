@@ -22,7 +22,7 @@ const ProductTable = () => {
             return (
               <tr key={device.id}>
                 <td>
-                  <img className={styles.deviceImage} sizes="1.25rem" srcSet={getDeviceImageSrcSet(device)} />
+                  <img className={styles.deviceImage} sizes="20px" srcSet={getDeviceImageSrcSet(device)} />
                 </td>
                 <td>{deviceLine}</td>
                 <td className={styles.deviceNameCol}>{deviceName}</td>

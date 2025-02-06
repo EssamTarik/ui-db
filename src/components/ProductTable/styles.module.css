@@ -5,18 +5,18 @@
 }
 
 .deviceImage {
-  width: 1.25rem;
+  width: 20px;
 }
 
 .table {
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
-  font-size: 0.75rem;
+  font-size: 14px;
   text-transform: capitalize;
 
   & tr {
-    height: 2rem;
+    height: 32px;
   }
 }
 
@@ -48,5 +48,5 @@
 }
 
 .deviceImageCol {
-  width: 2.25rem;
+  width: 36px;
 }
