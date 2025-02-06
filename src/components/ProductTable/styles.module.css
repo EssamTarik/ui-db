@@ -6,9 +6,12 @@
 
 .deviceImage {
   width: 20px;
+  margin: 0 8px;
 }
 
 .table {
+  --row-height: 32px;
+
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
@@ -16,16 +19,34 @@
   text-transform: capitalize;
 
   & tr {
-    height: 32px;
-  }
-}
-
-.tableBody {
-  & tr {
-    border-top: 1px solid var(--color-neutral-08);
+    border-bottom: 1px solid var(--color-neutral-08);
+    height: var(--row-height);
   }
 
   & td {
+    height: var(--row-height);
+  }
+}
+
+.row {
+  display: flex;
+  height: 100%;
+}
+
+.col {
+  flex: 1;
+}
+
+.deviceImageCol {
+  width: 36px;
+}
+
+.tableBody {
+  & tr:hover {
+    background-color: var(--color-neutral-02);
+  }
+
+  & td, .link {
     color: var(--color-text-2);
   }
 
@@ -47,6 +68,9 @@
   }
 }
 
-.deviceImageCol {
-  width: 36px;
+.link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
 }

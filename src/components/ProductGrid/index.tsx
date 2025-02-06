@@ -18,7 +18,7 @@ const ProductGrid = () => {
         const deviceLine = device.line?.name;
 
         return (
-          <Link to="" key={device.id} className={styles.productCard}>
+          <Link to={`/product/${device.id}`} key={device.id} className={styles.productCard}>
             <div className={styles.productLine}>{deviceLine}</div>
             <div className={styles.productImageContainer}>
               <img className={styles.productImage} sizes="155px" srcSet={getDeviceImageSrcSet(device)} />
