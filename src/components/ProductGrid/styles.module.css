@@ -3,15 +3,41 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
-  padding: 0 var(--main-layout-horizontal-padding);
+  padding: 16px var(--main-layout-horizontal-padding) 0;
   max-height: 100%;
   overflow: auto;
 }
 
 .productCard {
+  position: relative;
+
   width: 216px;
   border-radius: 8px;
   border: 1px solid var(--color-neutral-08);
+  text-decoration: none;
+  
+  &:hover {
+    background-color: var(--color-neutral-01);
+
+    & .productImageContainer {
+      background-color: var(--color-neutral-02);
+    }
+  }
+}
+
+.productLine {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  z-index: 1;
+
+  border-radius: 4px;
+  padding: 2px 4px;
+
+  background-color: white;
+  color: var(--color-primary-06);
+  font-size: 12px;
+  text-transform: capitalize;
 }
 
 .productImageContainer {

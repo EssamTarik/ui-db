@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { useUIDBContext } from "../../providers/UIDBProvider/context";
 import getDeviceImageSrcSet from "../../utils/getDeviceImageSrcSet";
 import styles from "./styles.module.css";
@@ -14,9 +15,11 @@ const ProductGrid = () => {
 
         const deviceName = device.product?.name;
         const deviceShortName = device.shortnames?.[0];
+        const deviceLine = device.line?.name;
 
         return (
-          <div key={device.id} className={styles.productCard}>
+          <Link to="" key={device.id} className={styles.productCard}>
+            <div className={styles.productLine}>{deviceLine}</div>
             <div className={styles.productImageContainer}>
               <img className={styles.productImage} sizes="155px" srcSet={getDeviceImageSrcSet(device)} />
             </div>
@@ -24,7 +27,7 @@ const ProductGrid = () => {
               <p className={styles.deviceName}>{deviceName}</p>
               <p className={styles.deviceShortName}>{deviceShortName}</p>
             </div>
-          </div>
+          </Link>
         )
       })}
     </div>
