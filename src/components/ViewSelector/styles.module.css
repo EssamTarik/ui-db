@@ -1,0 +1,15 @@
+.link {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active {
+  background-color: var(--color-neutral-01);
+
+  & path {
+    fill: var(--color-primary-06);
+  }
+}
