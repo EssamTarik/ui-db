@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import DeviceCount from '../DeviceCount';
 import FilterButton from '../FilterButton';
 import SearchField from '../SearchField';
@@ -11,7 +12,7 @@ const DataControlsBar = () => {
         <SearchField />
         <DeviceCount className={styles.deviceCount} />
       </div>
-      <div className={styles.section}>
+      <div className={classNames(styles.section, styles.filtersSection)}>
         <ViewSelector />
         <FilterButton className={styles.filterButton} />
       </div>

@@ -20,6 +20,19 @@ const UIDBProvider = ({ children }: Props) => {
   const [isFetching, setIsFetching] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<UIDBData | null>(null);
+  const [indexedDevices, setIndexedDevices] = useState({});
+
+  useEffect(() => {
+    const devices = data?.devices ?? [];
+    setIndexedDevices(
+      devices.reduce((acc, device) => {
+        return {
+          ...acc,
+          [device.id]: device,
+        };
+      }, {})
+    );
+  }, [data]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +53,7 @@ const UIDBProvider = ({ children }: Props) => {
   }, []);
 
   return (
-    <UIDBContext.Provider value={{ isFetching, error, data }}>
+    <UIDBContext.Provider value={{ isFetching, error, data, indexedDevices }}>
       {children}
     </UIDBContext.Provider>
   );
