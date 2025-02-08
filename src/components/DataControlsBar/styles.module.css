@@ -1,3 +1,9 @@
+.deviceCount {
+  margin: 0 0 0 16px;
+}
+
 .dataControlsBar {
+  display: flex;
+  align-items: center;
   padding: 16px 32px;
 }
