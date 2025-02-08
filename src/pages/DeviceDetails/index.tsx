@@ -2,6 +2,7 @@ import { useParams } from 'react-router';
 import { useState } from 'react';
 import { useUIDBContext } from '../../providers/UIDBProvider/context';
 import getDeviceImageSrcSet from '../../utils/getDeviceImageSrcSet';
+import CTA from '../../components/ui/CTA';
 import styles from './styles.module.css';
 
 const DeviceDetails = () => {
@@ -63,12 +64,12 @@ const DeviceDetails = () => {
       </div>
       <div className={styles.jsonSection}>
         {!viewJSONDetails && (
-          <button
+          <CTA
             onClick={toggleViewJSONDetails}
             className={styles.jsonDetailsButton}
           >
             See all details as json
-          </button>
+          </CTA>
         )}
         {viewJSONDetails && (
           <>

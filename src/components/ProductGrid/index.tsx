@@ -1,14 +1,14 @@
 import { Link } from 'react-router';
 import getDeviceImageSrcSet from '../../utils/getDeviceImageSrcSet';
-import useFilteredData from '../../hooks/useFilteredData';
+import usePaginationData from '../../hooks/usePaginationData';
 import styles from './styles.module.css';
 
 const ProductGrid = () => {
-  const data = useFilteredData();
+  const { pageData } = usePaginationData();
 
   return (
     <div className={styles.productGrid}>
-      {data?.map((device) => {
+      {pageData?.map((device) => {
         if (!device) {
           return null;
         }

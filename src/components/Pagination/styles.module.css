@@ -1,0 +1,13 @@
+.paginationControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0 auto;
+  padding: 8px;
+
+  font-size: 14px;
+}
+
+.pageInfo {
+  margin: 0 8px;
+}

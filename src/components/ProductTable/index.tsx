@@ -1,11 +1,11 @@
 import { Link } from 'react-router';
 import classNames from 'classnames';
 import getDeviceImageSrcSet from '../../utils/getDeviceImageSrcSet';
-import useFilteredData from '../../hooks/useFilteredData';
+import usePaginationData from '../../hooks/usePaginationData';
 import styles from './styles.module.css';
 
 const ProductTable = () => {
-  const data = useFilteredData();
+  const { pageData } = usePaginationData();
 
   return (
     <div className={styles.tableContainer}>
@@ -18,7 +18,7 @@ const ProductTable = () => {
           </tr>
         </thead>
         <tbody className={styles.tableBody}>
-          {data.map((device) => {
+          {pageData.map((device) => {
             const deviceName = device.product.name;
             const deviceLine = device.line.name;
 

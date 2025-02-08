@@ -1,0 +1,20 @@
+.cta {
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  background-color: white;
+  padding: 6px 0;
+
+  font-size: 14px;
+  color: var(--color-primary-06);
+
+  &:hover {
+    color: var(--color-primary-07);
+  }
+
+  &:focus {
+    color: var(--color-primary-06);
+    outline: var(--color-primary-06);
+  }
+}
