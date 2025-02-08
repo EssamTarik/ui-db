@@ -1,0 +1,29 @@
+.filterButtonContainer {
+  position: relative;
+}
+
+.filterButton {
+  height: 100%;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  color: var(--color-text-4);
+  font-size: 14px;
+  padding: 6px;
+  background-color: white;
+
+  &:hover {
+    background-color: var(--color-neutral-02);
+  }
+
+  &:focus {
+    outline: 1px solid var(--color-primary-06);
+    background-color: white;
+  }
+
+  &.active,:active {
+    color: var(--color-primary-06);
+    background-color: var(--color-neutral-01);
+  }
+}

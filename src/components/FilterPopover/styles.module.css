@@ -1,0 +1,57 @@
+
+.popover {
+  display: flex;
+  flex-direction: column;
+
+  --spacing: 16px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1;
+  padding: var(--spacing);
+  box-shadow: var(--popover-shadow);
+  font-size: 14px;
+  background-color: white;
+
+  max-height: 33vh;
+  max-width: 33vw;;
+  overflow: auto;
+
+  gap: var(--spacing);
+}
+
+.heading {
+  font-weight: 700;
+}
+
+.filterList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filterListItem {
+  text-transform: capitalize;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--color-text-2);
+
+  & label, input {
+    cursor: inherit;
+  }
+
+  &:not(:first-child) {
+    margin-top: 8px;
+  }
+}
+
+.filterListItemLabel {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  margin: 0 8px 0 0;
+}

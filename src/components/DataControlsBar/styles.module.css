@@ -8,8 +8,14 @@
 .section {
   display: flex;
   align-items: center;
+  height: 100%
 }
 
 .deviceCount {
   margin: 0 0 0 16px;
+}
+
+.filterButton {
+  margin-left: 14px;
+  height: 100%;
 }

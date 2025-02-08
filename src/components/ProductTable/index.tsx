@@ -1,11 +1,11 @@
 import { Link } from 'react-router';
 import classNames from 'classnames';
-import { useUIDBContext } from '../../providers/UIDBProvider/context';
 import getDeviceImageSrcSet from '../../utils/getDeviceImageSrcSet';
+import useFilteredData from '../../hooks/useFilteredData';
 import styles from './styles.module.css';
 
 const ProductTable = () => {
-  const { data } = useUIDBContext();
+  const data = useFilteredData();
 
   return (
     <div className={styles.tableContainer}>
@@ -18,7 +18,7 @@ const ProductTable = () => {
           </tr>
         </thead>
         <tbody className={styles.tableBody}>
-          {data?.devices.map((device) => {
+          {data.map((device) => {
             const deviceName = device.product.name;
             const deviceLine = device.line.name;
 

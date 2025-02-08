@@ -1,14 +1,14 @@
 import { Link } from 'react-router';
-import { useUIDBContext } from '../../providers/UIDBProvider/context';
 import getDeviceImageSrcSet from '../../utils/getDeviceImageSrcSet';
+import useFilteredData from '../../hooks/useFilteredData';
 import styles from './styles.module.css';
 
 const ProductGrid = () => {
-  const { data } = useUIDBContext();
+  const data = useFilteredData();
 
   return (
     <div className={styles.productGrid}>
-      {data?.devices.map((device) => {
+      {data?.map((device) => {
         if (!device) {
           return null;
         }

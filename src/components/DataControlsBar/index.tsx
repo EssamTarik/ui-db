@@ -1,4 +1,5 @@
 import DeviceCount from '../DeviceCount';
+import FilterButton from '../FilterButton';
 import SearchField from '../SearchField';
 import ViewSelector from '../ViewSelector';
 import styles from './styles.module.css';
@@ -12,6 +13,7 @@ const DataControlsBar = () => {
       </div>
       <div className={styles.section}>
         <ViewSelector />
+        <FilterButton className={styles.filterButton} />
       </div>
     </div>
   );
