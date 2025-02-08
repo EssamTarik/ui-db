@@ -1,5 +1,4 @@
 .searchOption {
-  height: var(--search-option-height);
   text-decoration: none;
   display: flex;
   justify-content: space-between;
@@ -8,6 +7,10 @@
   color: var(--color-text-unifi-2);
   font-size: 14px;
   text-transform: capitalize;
+
+  &.highlighted {
+    outline: 1px solid var(--color-primary-06);
+  }
 
   &:hover {
     background-color: var(--color-neutral-02);

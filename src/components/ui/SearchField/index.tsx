@@ -1,22 +1,28 @@
-import { ChangeEventHandler, FocusEventHandler, useRef, useState } from 'react';
+import { ChangeEventHandler, FocusEventHandler, FormEventHandler, KeyboardEventHandler, useEffect, useRef, useState } from 'react';
 import SearchIcon from '../icons/Search';
 import styles from './styles.module.css';
 import SearchOption from './SearchOption';
-import startsWithCaseInsensitive from '../../../utils/startsWithCaseInsensitive';
-import { useUIDBContext } from '../../../providers/UIDBProvider/context';
+import useSearchResults, { MatchType } from '../../../hooks/useSearchResults';
+import { useNavigate } from 'react-router';
+
+const MAX_SEARCH_RESULTS = 20;
 
 const SearchField = () => {
-  const { data } = useUIDBContext();
+  const [highlightedIndex, setHighlightedIndex] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLFormElement>(null);
   const [showOptions, setShowOptions] = useState(false);
   const isValidSearchTerm = searchTerm?.length >= 2;
+  const navigate = useNavigate();
 
-  console.log({ isValidSearchTerm });
+  const searchResults = useSearchResults(searchTerm, isValidSearchTerm ? MAX_SEARCH_RESULTS : 0);
+  
+  useEffect(() => {
+    setHighlightedIndex(0);
+  }, [searchResults])
 
   const handleFocus = () => {
-    console.log('focus');
     if (inputRef.current) {
       inputRef.current.focus();
     }
@@ -24,7 +30,6 @@ const SearchField = () => {
   }
 
   const handleBlur: FocusEventHandler = (event) => {
-    console.log('blur');
     if (containerRef.current && containerRef.current.contains(event.relatedTarget as Node)) {
       inputRef.current?.focus();
       return;
@@ -37,13 +42,39 @@ const SearchField = () => {
     setSearchTerm(e.target.value);
   }
 
-  const devices = data?.devices ?? [];
+  const handleKeyUp: KeyboardEventHandler = (e) => {
+    const minIndex = 0;
+    const maxIndex = searchResults.length - 1;
+    const nextIndex = highlightedIndex === maxIndex ? minIndex : highlightedIndex + 1;
+    const prevIndex = highlightedIndex === minIndex ? maxIndex : highlightedIndex - 1;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setHighlightedIndex(nextIndex);
+    }
+
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setHighlightedIndex(prevIndex);
+    }
+  }
+
+  const handleSubmit: FormEventHandler = (e) => {
+    e.preventDefault();
+    const selectedDevice = searchResults[highlightedIndex]?.device;
+    if (selectedDevice) {
+      navigate(`/product/${selectedDevice.id}`);
+    }
+  }
+
+  const hasSearchResults = searchResults.length > 0;
 
   return (
-    <div
+    <form
       ref={containerRef}
       tabIndex={-1}
       className={styles.searchFieldContainer}
+      onSubmit={handleSubmit}
     >
 
       <SearchIcon className={styles.searchIcon} />
@@ -55,40 +86,25 @@ const SearchField = () => {
         className={styles.searchField}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        onKeyUp={handleKeyUp}
       />
-      {showOptions && isValidSearchTerm && (
+      {showOptions && hasSearchResults && (
         <div className={styles.searchOptions}>
-          {devices.map((device) => {
-            const searchOptionProps = {
-              id: device.id,
-              name: device.product.name,
-              shortName: device.shortnames[0],
-            };
-            if (startsWithCaseInsensitive(device.product.name, searchTerm)) {
+          {searchResults.map(({ device, matchType }, index) => {
               return (
                 <SearchOption
-                  {...searchOptionProps}
                   key={device.id}
-                  highlightMatchLength={searchTerm.length}
-                />
-              )
-            }
-
-            if (startsWithCaseInsensitive(device.shortnames[0], searchTerm)) {
-              return (
-                <SearchOption
-                  {...searchOptionProps}
-                  key={device.id}
+                  id={device.id}
                   shortName={device.shortnames[0]}
+                  name={device.product.name}
+                  highlightMatchLength={matchType === MatchType.NAME ? searchTerm.length : 0}
+                  highlighted={index === highlightedIndex}
                 />
               )
-            }
-
-            return null;
           })}
         </div>
       )}
-    </div>
+    </form>
   )
 }
 
