@@ -1,8 +1,8 @@
-import { Link } from "react-router";
-import classNames from "classnames";
-import { useUIDBContext } from "../../providers/UIDBProvider/context";
-import getDeviceImageSrcSet from "../../utils/getDeviceImageSrcSet";
-import styles from "./styles.module.css";
+import { Link } from 'react-router';
+import classNames from 'classnames';
+import { useUIDBContext } from '../../providers/UIDBProvider/context';
+import getDeviceImageSrcSet from '../../utils/getDeviceImageSrcSet';
+import styles from './styles.module.css';
 
 const ProductTable = () => {
   const { data } = useUIDBContext();
@@ -25,20 +25,30 @@ const ProductTable = () => {
             return (
               <tr key={device.id}>
                 <td colSpan={3}>
-                  <Link to={`/product/${device.id}`} className={classNames(styles.link, styles.row)}>
-                    <img className={styles.deviceImage} sizes="20px" srcSet={getDeviceImageSrcSet(device)} />
+                  <Link
+                    to={`/product/${device.id}`}
+                    className={classNames(styles.link, styles.row)}
+                  >
+                    <img
+                      className={styles.deviceImage}
+                      sizes="20px"
+                      srcSet={getDeviceImageSrcSet(device)}
+                    />
                     <span className={styles.col}>{deviceLine}</span>
-                    <span className={classNames(styles.deviceNameCol, styles.col)}>{deviceName}</span>
+                    <span
+                      className={classNames(styles.deviceNameCol, styles.col)}
+                    >
+                      {deviceName}
+                    </span>
                   </Link>
                 </td>
               </tr>
-            )
-          }
-          )}
+            );
+          })}
         </tbody>
       </table>
     </div>
   );
-}
+};
 
 export default ProductTable;

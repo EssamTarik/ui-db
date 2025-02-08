@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
-import { Link } from "react-router";
-import classNames from "classnames";
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router';
+import classNames from 'classnames';
 import styles from './styles.module.css';
 
 interface Props {
@@ -11,7 +11,13 @@ interface Props {
   highlighted?: boolean;
 }
 
-const SearchOption = ({ id, name, shortName, highlighted = false, highlightMatchLength = 0 }: Props) => {
+const SearchOption = ({
+  id,
+  name,
+  shortName,
+  highlighted = false,
+  highlightMatchLength = 0,
+}: Props) => {
   const elementRef = useRef<HTMLAnchorElement>(null);
   const prevHighlighted = useRef(highlighted);
 
@@ -22,19 +28,30 @@ const SearchOption = ({ id, name, shortName, highlighted = false, highlightMatch
     }
 
     prevHighlighted.current = highlighted;
-  }, [highlighted])
+  }, [highlighted]);
 
   const matchText = name.slice(0, highlightMatchLength);
 
   return (
-    <Link ref={elementRef} to={`/product/${id}`} className={classNames(styles.searchOption, { [styles.highlighted]: highlighted })} key={id}>
-      <span className={classNames(styles.productName, styles.searchOptionLabel)}>
+    <Link
+      ref={elementRef}
+      to={`/product/${id}`}
+      className={classNames(styles.searchOption, {
+        [styles.highlighted]: highlighted,
+      })}
+      key={id}
+    >
+      <span
+        className={classNames(styles.productName, styles.searchOptionLabel)}
+      >
         <span className={styles.matchText}>{matchText}</span>
         <span>{name.slice(highlightMatchLength)}</span>
       </span>
-      <span className={classNames(styles.shortName, styles.searchOptionLabel)}>{shortName}</span>
+      <span className={classNames(styles.shortName, styles.searchOptionLabel)}>
+        {shortName}
+      </span>
     </Link>
   );
-}
+};
 
 export default SearchOption;

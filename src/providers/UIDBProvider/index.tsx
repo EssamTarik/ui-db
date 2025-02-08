@@ -1,7 +1,7 @@
-import { ReactNode, useEffect, useState } from "react";
-import { UI_DB_PUBLIC_URL } from "../../consts";
-import { UIDBData } from "./types";
-import { UIDBContext } from "./context";
+import { ReactNode, useEffect, useState } from 'react';
+import { UI_DB_PUBLIC_URL } from '../../consts';
+import { UIDBData } from './types';
+import { UIDBContext } from './context';
 
 const fetchUIDBData = async () => {
   const res = await fetch(UI_DB_PUBLIC_URL);
@@ -10,8 +10,7 @@ const fetchUIDBData = async () => {
   }
 
   return res.json();
-}
-
+};
 
 interface Props {
   children: ReactNode;
@@ -21,7 +20,7 @@ const UIDBProvider = ({ children }: Props) => {
   const [isFetching, setIsFetching] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<UIDBData | null>(null);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       setIsFetching(true);
@@ -35,7 +34,7 @@ const UIDBProvider = ({ children }: Props) => {
       } finally {
         setIsFetching(false);
       }
-    }
+    };
 
     fetchData();
   }, []);
@@ -45,6 +44,6 @@ const UIDBProvider = ({ children }: Props) => {
       {children}
     </UIDBContext.Provider>
   );
-}
+};
 
-export default UIDBProvider
+export default UIDBProvider;

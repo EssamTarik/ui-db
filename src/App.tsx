@@ -1,8 +1,8 @@
-import { Routes, Route } from 'react-router'
-import UIDBProvider from './providers/UIDBProvider'
-import ProductTable from './components/ProductTable'
-import ProductGrid from './components/ProductGrid'
-import DataLayout from './components/DataLayout'
+import { Routes, Route } from 'react-router';
+import UIDBProvider from './providers/UIDBProvider';
+import ProductTable from './components/ProductTable';
+import ProductGrid from './components/ProductGrid';
+import DataLayout from './components/DataLayout';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         </Route>
       </Routes>
     </UIDBProvider>
-  )
+  );
 }
 
-export default App
+export default App;

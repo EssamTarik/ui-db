@@ -1,9 +1,17 @@
-import { ChangeEventHandler, FocusEventHandler, FormEventHandler, KeyboardEventHandler, useEffect, useRef, useState } from 'react';
+import {
+  ChangeEventHandler,
+  FocusEventHandler,
+  FormEventHandler,
+  KeyboardEventHandler,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { useNavigate } from 'react-router';
 import SearchIcon from '../icons/Search';
+import useSearchResults, { MatchType } from '../../../hooks/useSearchResults';
 import styles from './styles.module.css';
 import SearchOption from './SearchOption';
-import useSearchResults, { MatchType } from '../../../hooks/useSearchResults';
-import { useNavigate } from 'react-router';
 
 const MAX_SEARCH_RESULTS = 20;
 
@@ -16,37 +24,45 @@ const SearchField = () => {
   const isValidSearchTerm = searchTerm?.length >= 2;
   const navigate = useNavigate();
 
-  const searchResults = useSearchResults(searchTerm, isValidSearchTerm ? MAX_SEARCH_RESULTS : 0);
-  
+  const searchResults = useSearchResults(
+    searchTerm,
+    isValidSearchTerm ? MAX_SEARCH_RESULTS : 0
+  );
+
   useEffect(() => {
     setHighlightedIndex(0);
-  }, [searchResults])
+  }, [searchResults]);
 
   const handleFocus = () => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
     setShowOptions(true);
-  }
+  };
 
   const handleBlur: FocusEventHandler = (event) => {
-    if (containerRef.current && containerRef.current.contains(event.relatedTarget as Node)) {
+    if (
+      containerRef.current &&
+      containerRef.current.contains(event.relatedTarget as Node)
+    ) {
       inputRef.current?.focus();
       return;
     }
 
     setShowOptions(false);
-  }
+  };
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setSearchTerm(e.target.value);
-  }
+  };
 
   const handleKeyUp: KeyboardEventHandler = (e) => {
     const minIndex = 0;
     const maxIndex = searchResults.length - 1;
-    const nextIndex = highlightedIndex === maxIndex ? minIndex : highlightedIndex + 1;
-    const prevIndex = highlightedIndex === minIndex ? maxIndex : highlightedIndex - 1;
+    const nextIndex =
+      highlightedIndex === maxIndex ? minIndex : highlightedIndex + 1;
+    const prevIndex =
+      highlightedIndex === minIndex ? maxIndex : highlightedIndex - 1;
 
     if (e.key === 'ArrowDown') {
       e.preventDefault();
@@ -57,7 +73,7 @@ const SearchField = () => {
       e.preventDefault();
       setHighlightedIndex(prevIndex);
     }
-  }
+  };
 
   const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
@@ -65,7 +81,7 @@ const SearchField = () => {
     if (selectedDevice) {
       navigate(`/product/${selectedDevice.id}`);
     }
-  }
+  };
 
   const hasSearchResults = searchResults.length > 0;
 
@@ -76,13 +92,12 @@ const SearchField = () => {
       className={styles.searchFieldContainer}
       onSubmit={handleSubmit}
     >
-
       <SearchIcon className={styles.searchIcon} />
       <input
         value={searchTerm}
         onChange={handleChange}
         ref={inputRef}
-        placeholder='Search'
+        placeholder="Search"
         className={styles.searchField}
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -91,21 +106,23 @@ const SearchField = () => {
       {showOptions && hasSearchResults && (
         <div className={styles.searchOptions}>
           {searchResults.map(({ device, matchType }, index) => {
-              return (
-                <SearchOption
-                  key={device.id}
-                  id={device.id}
-                  shortName={device.shortnames[0]}
-                  name={device.product.name}
-                  highlightMatchLength={matchType === MatchType.NAME ? searchTerm.length : 0}
-                  highlighted={index === highlightedIndex}
-                />
-              )
+            return (
+              <SearchOption
+                key={device.id}
+                id={device.id}
+                shortName={device.shortnames[0]}
+                name={device.product.name}
+                highlightMatchLength={
+                  matchType === MatchType.NAME ? searchTerm.length : 0
+                }
+                highlighted={index === highlightedIndex}
+              />
+            );
           })}
         </div>
       )}
     </form>
-  )
-}
+  );
+};
 
 export default SearchField;
