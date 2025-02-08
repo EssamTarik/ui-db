@@ -1,11 +1,12 @@
 import { Outlet } from "react-router";
 import DataControlsBar from "../DataControlsBar";
 import Layout from "../Layout";
+import styles from './styles.module.css';
 
 const DataLayout = () => (
   <Layout>
     <DataControlsBar />
-    <Outlet />
+    <div className={styles.dataContent}><Outlet /></div>
   </Layout>
 );
 

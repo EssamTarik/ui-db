@@ -1,0 +1,36 @@
+.searchOption {
+  height: var(--search-option-height);
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  height: var(--search-option-height);
+  padding: 8px;
+  color: var(--color-text-unifi-2);
+  font-size: 14px;
+  text-transform: capitalize;
+
+  &:hover {
+    background-color: var(--color-neutral-02);
+  }
+}
+
+.searchOptionLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.productName {
+  flex: 3;
+}
+
+.shortName {
+  flex: 1;
+  color: var(--color-text-3);
+  text-transform: uppercase;
+}
+
+.matchText {
+  font-weight: 700;
+  text-decoration: underline;
+}
