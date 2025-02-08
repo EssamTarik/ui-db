@@ -1,4 +1,4 @@
-import SearchField from '../ui/SearchField';
+import SearchField from '../SearchField';
 import styles from './styles.module.css';
 
 const DataControlsBar = () => {

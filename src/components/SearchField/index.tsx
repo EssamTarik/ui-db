@@ -8,8 +8,8 @@ import {
   useState,
 } from 'react';
 import { useNavigate } from 'react-router';
-import SearchIcon from '../icons/Search';
-import useSearchResults, { MatchType } from '../../../hooks/useSearchResults';
+import SearchIcon from '../ui/icons/Search';
+import useSearchResults, { MatchType } from '../../hooks/useSearchResults';
 import styles from './styles.module.css';
 import SearchOption from './SearchOption';
 
