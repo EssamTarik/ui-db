@@ -50,6 +50,7 @@ const SearchField = () => {
     }
 
     setShowOptions(false);
+    setSearchTerm('');
   };
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
