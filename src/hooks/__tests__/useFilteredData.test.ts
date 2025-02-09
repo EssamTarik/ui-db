@@ -1,4 +1,5 @@
 import mockDevices from '../../utils/mocks/mockDevices';
+import { mockUseUIDBContext } from '../../utils/testing';
 import useFilteredData from '../useFilteredData';
 
 const mockGetAll = jest
@@ -8,11 +9,7 @@ const mockGetAll = jest
 const mockUseSearchParams = jest.fn().mockReturnValue([{ getAll: mockGetAll }]);
 
 jest.mock('../../providers/UIDBProvider/context', () => ({
-  useUIDBContext: () => ({
-    data: {
-      devices: mockDevices,
-    },
-  }),
+  useUIDBContext: mockUseUIDBContext,
 }));
 
 jest.mock('react-router', () => ({
