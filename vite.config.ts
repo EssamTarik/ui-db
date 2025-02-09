@@ -4,6 +4,7 @@ import postcssNested from 'postcss-nested';
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/ui-db',
   plugins: [react()],
   css: {
     postcss: {
