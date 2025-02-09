@@ -1,0 +1,6 @@
+.popover {
+  position: absolute;
+  top: 100%;
+  z-index: 1;
+  box-shadow: var(--popover-shadow);
+}

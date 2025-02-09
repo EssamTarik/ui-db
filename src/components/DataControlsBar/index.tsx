@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import DeviceCount from '../DeviceCount';
-import FilterButton from '../FilterButton';
+import FilterButton from '../filters/FilterButton';
 import SearchField from '../SearchField';
 import ViewSelector from '../ViewSelector';
 import styles from './styles.module.css';

@@ -4,12 +4,8 @@
   flex-direction: column;
 
   --spacing: 16px;
-  position: absolute;
-  top: 100%;
   right: 0;
-  z-index: 1;
   padding: var(--spacing);
-  box-shadow: var(--popover-shadow);
   font-size: 14px;
   background-color: white;
 

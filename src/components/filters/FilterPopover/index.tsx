@@ -1,6 +1,7 @@
 import { FocusEventHandler, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router';
-import useProductLines from '../../hooks/useProductLines';
+import useProductLines from '../../../hooks/useProductLines';
+import Popover from '../../ui/Popover';
 import styles from './styles.module.css';
 
 interface Props {
@@ -40,7 +41,7 @@ const FilterPopover = ({ onClose }: Props) => {
   };
 
   return (
-    <div
+    <Popover
       ref={popoverRef}
       onBlur={handleBlur}
       tabIndex={-1}
@@ -62,7 +63,7 @@ const FilterPopover = ({ onClose }: Props) => {
           </li>
         ))}
       </ul>
-    </div>
+    </Popover>
   );
 };
 

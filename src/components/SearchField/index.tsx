@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router';
 import SearchIcon from '../ui/icons/Search';
 import useSearchResults, { MatchType } from '../../hooks/useSearchResults';
 import getProductRoute from '../../utils/nav/getProductRoute';
+import Popover from '../ui/Popover';
 import styles from './styles.module.css';
 import SearchOption from './SearchOption';
 
@@ -106,7 +107,7 @@ const SearchField = () => {
         onKeyUp={handleKeyUp}
       />
       {showOptions && hasSearchResults && (
-        <div className={styles.searchOptions}>
+        <Popover className={styles.searchOptions}>
           {searchResults.map(({ device, matchType }, index) => {
             return (
               <SearchOption
@@ -121,7 +122,7 @@ const SearchField = () => {
               />
             );
           })}
-        </div>
+        </Popover>
       )}
     </form>
   );

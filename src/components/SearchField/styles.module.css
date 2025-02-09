@@ -52,15 +52,10 @@
   --padding: 8px;
   max-height: calc(var(--search-option-height) * var(--visible-options) + var(--padding) * 2 + var(--peek-size));
   overflow: auto;
-  z-index: 1;
-  position: absolute;
-  top: 100%;
   width: 100%;
   border-radius: 8px;
   padding: var(--padding);
   background-color: white;
-  box-shadow: var(--popover-shadow);
-  
 
   &:empty {
     display: none;
