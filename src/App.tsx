@@ -1,17 +1,17 @@
 import { Routes, Route } from 'react-router';
 import UIDBProvider from './providers/UIDBProvider';
-import ProductTable from './components/ProductTable';
-import DeviceDetails from './pages/DeviceDetails';
+import DeviceDetails from './pages/DeviceDetailsPage';
 import DeviceGridPage from './pages/DeviceGridPage';
 import DataLayout from './components/layout/DataLayout';
 import Layout from './components/layout/Layout';
+import DeviceTablePage from './pages/DeviceTablePage';
 
 function App() {
   return (
     <UIDBProvider>
       <Routes>
         <Route element={<DataLayout />}>
-          <Route index Component={ProductTable} />
+          <Route index Component={DeviceTablePage} />
           <Route path="/grid" Component={DeviceGridPage} />
         </Route>
         <Route element={<Layout />}>

@@ -5,7 +5,7 @@ import CTA from '../../components/ui/CTA';
 import DeviceImage from '../../components/misc/DeviceImage';
 import styles from './styles.module.css';
 
-const DeviceDetails = () => {
+const DeviceDetailsPage = () => {
   const [viewJSONDetails, setViewJSONDetails] = useState(false);
   const { id } = useParams();
   const { indexedDevices, isFetching } = useUIDBContext();
@@ -82,4 +82,4 @@ const DeviceDetails = () => {
   );
 };
 
-export default DeviceDetails;
+export default DeviceDetailsPage;
