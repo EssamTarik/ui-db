@@ -17,6 +17,10 @@ jest.mock('react-router', () => ({
 }));
 
 describe('usePaginationData', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should return correct page data', () => {
     const { pageData, currentPage, totalPages } = usePaginationData(2);
     expect(pageData).toEqual([mockDevices[0], mockDevices[1]]);

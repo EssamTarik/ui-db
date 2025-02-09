@@ -17,6 +17,10 @@ const useSearchResults = (searchTerm: string, limit = Infinity) => {
   const { data } = useUIDBContext();
 
   return useMemo(() => {
+    if (!searchTerm) {
+      return [];
+    }
+
     const results: SearchResult[] = [];
     const devices = data?.devices ?? [];
 
@@ -37,10 +41,10 @@ const useSearchResults = (searchTerm: string, limit = Infinity) => {
         continue;
       }
 
-      const productShortNameMatch = startsWithCaseInsensitive(
-        device.shortnames[0],
-        searchTerm
+      const productShortNameMatch = device.shortnames.some((shortName) =>
+        startsWithCaseInsensitive(shortName, searchTerm)
       );
+
       if (productShortNameMatch) {
         results.push({
           device,

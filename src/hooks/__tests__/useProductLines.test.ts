@@ -7,12 +7,16 @@ jest.mock('../../providers/UIDBProvider/context', () => ({
 }));
 
 describe('useProductLines', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should return product lines', () => {
     const { result: productLines } = renderHook(() => useProductLines());
     expect(productLines.current).toEqual({
-      'product-line-1': 'product 1',
-      'product-line-2': 'product 2',
-      'product-line-3': 'product 3',
+      'product-line-1': 'line 1',
+      'product-line-2': 'line 2',
+      'product-line-3': 'line 3',
     });
   });
 });
