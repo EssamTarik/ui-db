@@ -1,0 +1,19 @@
+.deviceInfo {
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+.deviceInfoRow {
+  display: flex;
+  min-height: 32px;
+
+  & .key {
+    width: 50%;
+    color: var(--color-text-1);
+  }
+
+  & .value {
+    width: 50%;
+    color: var(--color-text-4);
+  }
+}

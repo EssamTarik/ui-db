@@ -40,25 +40,6 @@
   width: 260px;
 }
 
-.productInfoRow {
-  display: flex;
-  min-height: 32px;
-
-  & .key {
-    width: 50%;
-    color: var(--color-text-1);
-  }
-
-  & .value {
-    width: 50%;
-    color: var(--color-text-4);
-  }
-}
-
-.productInfo {
-  margin: 16px 0;
-  font-size: 14px;
-}
 
 .jsonDetailsButton {
   font-size: 14px;

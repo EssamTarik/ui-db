@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useUIDBContext } from '../../providers/UIDBProvider/context';
 import CTA from '../../components/ui/CTA';
 import DeviceImage from '../../components/misc/DeviceImage';
+import DeviceInfoTable from '../../components/device/DeviceInfoTable';
+import getDeviceInfo from '../../utils/device/getDeviceInfo';
 import styles from './styles.module.css';
 
 const DeviceDetailsPage = () => {
@@ -27,15 +29,7 @@ const DeviceDetailsPage = () => {
     );
   }
 
-  const productInfo = {
-    'Product line': device.line.name,
-    id: device.id,
-    name: device.product.name,
-    'short name': device.shortnames[0],
-    speed: device.unifi?.network?.ethernetMaxSpeedMegabitsPerSecond,
-    'max power': device.unifi?.network?.radios.na?.maxPower,
-    'number of ports': device.unifi?.network?.numberOfPorts,
-  };
+  const { name } = getDeviceInfo(device);
 
   return (
     <div className={styles.deviceDetailsContainer}>
@@ -48,18 +42,9 @@ const DeviceDetailsPage = () => {
           />
         </div>
         <div className={styles.deviceInfo}>
-          <div className={styles.heading}>{device.product.name}</div>
-          <div className={styles.productLine}>{device.line.name}</div>
-          <div className={styles.productInfo}>
-            {Object.entries(productInfo).map(([key, value]) =>
-              value ? (
-                <div className={styles.productInfoRow} key={key}>
-                  <div className={styles.key}>{key}</div>
-                  <div className={styles.value}>{value}</div>
-                </div>
-              ) : null
-            )}
-          </div>
+          <div className={styles.heading}>{name}</div>
+          <div className={styles.productLine}>{name}</div>
+          <DeviceInfoTable device={device} />
         </div>
       </div>
       <div className={styles.jsonSection}>
