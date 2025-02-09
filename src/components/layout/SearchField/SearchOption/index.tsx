@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import ProductLink from '../../ProductLink';
+import ProductLink from '../../../misc/ProductLink';
 import styles from './styles.module.css';
 
 interface Props {

@@ -1,6 +1,6 @@
-import { Device } from '../../providers/UIDBProvider/types';
-import getDeviceInfo from '../../utils/device/getDeviceInfo';
-import getDeviceImageSrcSet from '../../utils/getDeviceImageSrcSet';
+import { Device } from '../../../providers/UIDBProvider/types';
+import getDeviceInfo from '../../../utils/device/getDeviceInfo';
+import getDeviceImageSrcSet from '../../../utils/getDeviceImageSrcSet';
 
 interface Props {
   device: Device;

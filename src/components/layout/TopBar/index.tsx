@@ -1,6 +1,6 @@
 import { Link, useSearchParams } from 'react-router';
-import Logo from '../ui/icons/Logo';
-import packageJSON from '../../../package.json';
+import Logo from '../../ui/icons/Logo';
+import packageJSON from '../../../../package.json';
 import styles from './styles.module.css';
 
 const TopBar = () => {

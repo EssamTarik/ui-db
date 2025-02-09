@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useUIDBContext } from '../../providers/UIDBProvider/context';
+import { useUIDBContext } from '../../../providers/UIDBProvider/context';
 import styles from './styles.module.css';
 
 interface Props {

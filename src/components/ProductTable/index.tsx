@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import usePaginationData from '../../hooks/usePaginationData';
-import ProductLink from '../ProductLink';
-import DeviceImage from '../DeviceImage';
+import DeviceImage from '../misc/DeviceImage';
+import ProductLink from '../misc/ProductLink';
 import styles from './styles.module.css';
 
 const ProductTable = () => {

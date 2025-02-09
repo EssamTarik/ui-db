@@ -1,7 +1,7 @@
 import { Device } from '../../../providers/UIDBProvider/types';
 import getDeviceInfo from '../../../utils/device/getDeviceInfo';
-import DeviceImage from '../../DeviceImage';
-import ProductLink from '../../ProductLink';
+import DeviceImage from '../../misc/DeviceImage';
+import ProductLink from '../../misc/ProductLink';
 import styles from './styles.module.css';
 
 interface Props {

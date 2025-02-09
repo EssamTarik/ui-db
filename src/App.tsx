@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router';
 import UIDBProvider from './providers/UIDBProvider';
 import ProductTable from './components/ProductTable';
-import DataLayout from './components/DataLayout';
 import DeviceDetails from './pages/DeviceDetails';
-import Layout from './components/Layout';
 import DeviceGridPage from './pages/DeviceGridPage';
+import DataLayout from './components/layout/DataLayout';
+import Layout from './components/layout/Layout';
 
 function App() {
   return (

@@ -1,4 +1,4 @@
-import usePaginationData from '../../hooks/usePaginationData';
+import usePaginationData from '../../../hooks/usePaginationData';
 import styles from './styles.module.css';
 
 const Pagination = () => {

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Link, LinkProps } from 'react-router';
-import getProductRoute from '../../utils/nav/getProductRoute';
+import getProductRoute from '../../../utils/nav/getProductRoute';
 
 interface Props extends Omit<LinkProps, 'to'> {
   id: string;

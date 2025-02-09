@@ -1,7 +1,7 @@
 import { NavLink, NavLinkProps, useSearchParams } from 'react-router';
 import classNames from 'classnames';
-import TableIcon from '../ui/icons/Table';
-import GridIcon from '../ui/icons/Grid';
+import TableIcon from '../../ui/icons/Table';
+import GridIcon from '../../ui/icons/Grid';
 import styles from './styles.module.css';
 
 const ViewSelector = () => {
