@@ -1,4 +1,4 @@
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { vi, describe, it, expect, beforeEach, Mock } from 'vitest';
 import mockDevices from '../../utils/mocks/mockDevices';
 import { mockUseUIDBContext } from '../../utils/testing';
 import useFilteredData from '../useFilteredData';
@@ -32,15 +32,13 @@ describe('useFilteredData', () => {
   });
 
   it('should return all devices if no product lines are selected', () => {
-    (mockUseSearchParams as vi.mock).mockReturnValueOnce([
-      { getAll: () => [] },
-    ]);
+    (mockUseSearchParams as Mock).mockReturnValueOnce([{ getAll: () => [] }]);
     const filteredDevices = useFilteredData();
     expect(filteredDevices).toEqual(mockDevices);
   });
 
   it('should return empty array if no devices are found', () => {
-    (mockUseSearchParams as vi.mock).mockReturnValueOnce([
+    (mockUseSearchParams as Mock).mockReturnValueOnce([
       { getAll: () => ['product-line-4'] },
     ]);
     const filteredDevices = useFilteredData();
