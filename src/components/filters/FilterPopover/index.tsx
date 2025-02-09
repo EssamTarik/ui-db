@@ -43,6 +43,7 @@ const FilterPopover = ({ onClose }: Props) => {
 
   return (
     <Popover
+      data-testid="filter-popover"
       ref={popoverRef}
       onBlur={handleBlur}
       tabIndex={-1}
@@ -51,9 +52,10 @@ const FilterPopover = ({ onClose }: Props) => {
       <div className={styles.heading}>Product line</div>
       <ul className={styles.filterList}>
         {productLineEntries.map(([id, name]) => (
-          <li className={styles.filterListItem} key={id}>
+          <li data-testid={id} className={styles.filterListItem} key={id}>
             <label className={styles.filterListItemLabel}>
               <input
+                data-testid={`${id}-checkbox`}
                 checked={selectedProductLines.includes(id)}
                 onChange={(e) => handleChange(e.target.checked, id)}
                 className={styles.checkbox}

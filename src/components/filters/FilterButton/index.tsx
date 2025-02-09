@@ -19,6 +19,7 @@ const FilterButton = ({ className }: Props) => {
   return (
     <div className={classNames(styles.filterButtonContainer, className)}>
       <button
+        data-testid="filter-button"
         onClick={handleClick}
         className={classNames(styles.filterButton, {
           [styles.active]: open || hasProductLines,

@@ -1,5 +1,5 @@
-import { vi, describe, it, expect } from 'vitest';
-import { render } from '@testing-library/react';
+import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { cleanup, render } from '@testing-library/react';
 import mockDevices from '../../../../utils/mocks/mockDevices';
 import DeviceCard from '..';
 import { Device } from '../../../../providers/UIDBProvider/types';
@@ -15,6 +15,11 @@ vi.mock('../../../misc/DeviceImage', () => ({
 }));
 
 describe('DeviceCard', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    cleanup();
+  });
+
   it('should render device card', async () => {
     const { findByTestId } = render(
       <DeviceCard device={mockDevices[0] as Device} />
