@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useUIDBContext } from '../../providers/UIDBProvider/context';
 import CTA from '../../components/ui/CTA';
 import DeviceImage from '../../components/misc/DeviceImage';
-import DeviceInfoTable from '../../components/device/DeviceInfoTable';
+import DeviceInfoTable from '../../components/info/DeviceInfoTable';
 import getDeviceInfo from '../../utils/device/getDeviceInfo';
 import styles from './styles.module.css';
 
