@@ -16,4 +16,6 @@ const ProductLink = forwardRef<HTMLAnchorElement, Props>(
   }
 );
 
+ProductLink.displayName = 'ProductLink';
+
 export default ProductLink;

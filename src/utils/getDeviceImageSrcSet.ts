@@ -5,7 +5,7 @@ const getImageUrl = (id: string, image: string, size: number) =>
 
 const sizes = [25, 32, 51, 64, 101, 128, 129, 256, 257, 512, 1000];
 
-export default (device: Device) => {
+export default (device: Pick<Device, 'images' | 'id'>) => {
   const { images, id } = device;
   const { default: defaultImage } = images;
 

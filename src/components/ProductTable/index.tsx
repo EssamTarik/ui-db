@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import getDeviceImageSrcSet from '../../utils/getDeviceImageSrcSet';
 import usePaginationData from '../../hooks/usePaginationData';
 import ProductLink from '../ProductLink';
+import DeviceImage from '../DeviceImage';
 import styles from './styles.module.css';
 
 const ProductTable = () => {
@@ -29,10 +29,10 @@ const ProductTable = () => {
                     id={device.id}
                     className={classNames(styles.link, styles.row)}
                   >
-                    <img
+                    <DeviceImage
                       className={styles.deviceImage}
                       sizes="20px"
-                      srcSet={getDeviceImageSrcSet(device)}
+                      device={device}
                     />
                     <span className={styles.col}>{deviceLine}</span>
                     <span

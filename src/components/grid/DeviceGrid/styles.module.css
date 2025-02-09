@@ -1,0 +1,15 @@
+.deviceGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px var(--main-layout-horizontal-padding) 0;
+  max-height: 100%;
+  overflow: auto;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .deviceGrid {
+    justify-content: flex-start;
+  }
+}

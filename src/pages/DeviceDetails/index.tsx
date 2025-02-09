@@ -1,8 +1,8 @@
 import { useParams } from 'react-router';
 import { useState } from 'react';
 import { useUIDBContext } from '../../providers/UIDBProvider/context';
-import getDeviceImageSrcSet from '../../utils/getDeviceImageSrcSet';
 import CTA from '../../components/ui/CTA';
+import DeviceImage from '../../components/DeviceImage';
 import styles from './styles.module.css';
 
 const DeviceDetails = () => {
@@ -41,10 +41,10 @@ const DeviceDetails = () => {
     <div className={styles.deviceDetailsContainer}>
       <div className={styles.deviceDetails}>
         <div className={styles.imgContainer}>
-          <img
+          <DeviceImage
             className={styles.productImg}
             sizes="260px"
-            srcSet={getDeviceImageSrcSet(device)}
+            device={device}
           />
         </div>
         <div className={styles.deviceInfo}>
