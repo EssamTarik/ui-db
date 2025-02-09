@@ -1,15 +1,16 @@
 import { renderHook } from '@testing-library/react';
+import { vi, describe, it, expect, beforeEach } from 'vitest';
 import useSearchResults, { MatchType } from '../useSearchResults';
 import mockDevices from '../../utils/mocks/mockDevices';
 import { mockUseUIDBContext } from '../../utils/testing';
 
-jest.mock('../../providers/UIDBProvider/context', () => ({
+vi.mock('../../providers/UIDBProvider/context', () => ({
   useUIDBContext: () => mockUseUIDBContext(),
 }));
 
 describe('useSearchResults', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should return search results for name matches', () => {

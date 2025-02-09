@@ -1,14 +1,15 @@
+import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { renderHook } from '@testing-library/react';
 import { mockUseUIDBContext } from '../../utils/testing';
 import useProductLines from '../useProductLines';
 
-jest.mock('../../providers/UIDBProvider/context', () => ({
+vi.mock('../../providers/UIDBProvider/context', () => ({
   useUIDBContext: mockUseUIDBContext,
 }));
 
 describe('useProductLines', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should return product lines', () => {

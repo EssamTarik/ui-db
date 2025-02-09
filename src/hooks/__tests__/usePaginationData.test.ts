@@ -1,24 +1,25 @@
 import { URLSearchParamsInit } from 'react-router';
+import { vi, describe, it, expect, beforeEach } from 'vitest';
 import mockDevices from '../../utils/mocks/mockDevices';
 import usePaginationData from '../usePaginationData';
 
-jest.mock('../useFilteredData', () => ({ default: () => mockDevices }));
+vi.mock('../useFilteredData', () => ({ default: () => mockDevices }));
 
-const mockSetSearchParams = jest.fn();
-const mockUseSearchParams = jest.fn().mockReturnValue([
+const mockSetSearchParams = vi.fn();
+const mockUseSearchParams = vi.fn().mockReturnValue([
   {
     get: () => '1',
   },
   (args: URLSearchParamsInit) => mockSetSearchParams(args),
 ]);
 
-jest.mock('react-router', () => ({
+vi.mock('react-router', () => ({
   useSearchParams: () => mockUseSearchParams(),
 }));
 
 describe('usePaginationData', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should return correct page data', () => {

@@ -1,28 +1,29 @@
+import { vi, describe, it, expect, beforeEach } from 'vitest';
 import mockDevices from '../../utils/mocks/mockDevices';
 import { mockUseUIDBContext } from '../../utils/testing';
 import useFilteredData from '../useFilteredData';
 
-const mockGetAll = jest
+const mockGetAll = vi
   .fn()
   .mockReturnValue(['product-line-3', 'product-line-1']);
 
-const mockUseSearchParams = jest.fn().mockReturnValue([{ getAll: mockGetAll }]);
+const mockUseSearchParams = vi.fn().mockReturnValue([{ getAll: mockGetAll }]);
 
-jest.mock('../../providers/UIDBProvider/context', () => ({
+vi.mock('../../providers/UIDBProvider/context', () => ({
   useUIDBContext: mockUseUIDBContext,
 }));
 
-jest.mock('react-router', () => ({
+vi.mock('react-router', () => ({
   useSearchParams: () => mockUseSearchParams(),
 }));
 
-jest.mock('../../consts', () => ({
+vi.mock('../../consts', () => ({
   PRODUCT_LINE_FILTER_KEY: 'product_line',
 }));
 
 describe('useFilteredData', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should filter devices by product line', () => {
@@ -31,7 +32,7 @@ describe('useFilteredData', () => {
   });
 
   it('should return all devices if no product lines are selected', () => {
-    (mockUseSearchParams as jest.Mock).mockReturnValueOnce([
+    (mockUseSearchParams as vi.mock).mockReturnValueOnce([
       { getAll: () => [] },
     ]);
     const filteredDevices = useFilteredData();
@@ -39,7 +40,7 @@ describe('useFilteredData', () => {
   });
 
   it('should return empty array if no devices are found', () => {
-    (mockUseSearchParams as jest.Mock).mockReturnValueOnce([
+    (mockUseSearchParams as vi.mock).mockReturnValueOnce([
       { getAll: () => ['product-line-4'] },
     ]);
     const filteredDevices = useFilteredData();

@@ -6,6 +6,9 @@ import postcssNested from 'postcss-nested';
 export default defineConfig({
   base: '/ui-db',
   plugins: [react()],
+  test: {
+    environment: 'happy-dom',
+  },
   css: {
     postcss: {
       plugins: [postcssNested],

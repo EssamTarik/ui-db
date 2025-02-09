@@ -9,7 +9,7 @@ interface Props {
 }
 
 const DeviceCard = ({ device }: Props) => {
-  const { line, name, id } = getDeviceInfo(device);
+  const { line, name, shortname, id } = getDeviceInfo(device);
 
   return (
     <ProductLink id={id} className={styles.deviceCard}>
@@ -22,8 +22,12 @@ const DeviceCard = ({ device }: Props) => {
         />
       </div>
       <div className={styles.deviceInfo}>
-        <p className={styles.deviceName}>{name}</p>
-        <p className={styles.deviceShortName}>{name}</p>
+        <p data-testid="device-name" className={styles.deviceName}>
+          {name}
+        </p>
+        <p data-testid="device-short-name" className={styles.deviceShortName}>
+          {shortname}
+        </p>
       </div>
     </ProductLink>
   );
