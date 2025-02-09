@@ -1,5 +1,5 @@
-const getProductRoute = (id: string) => {
-  return `/products/${id}`;
+const getProductRoute = (id: string, searchparams: URLSearchParams) => {
+  return `/products/${id}?${searchparams.toString()}`;
 };
 
 export default getProductRoute;

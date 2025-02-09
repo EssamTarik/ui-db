@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useSearchParams } from 'react-router';
 import SearchIcon from '../../ui/icons/Search';
 import useSearchResults, { MatchType } from '../../../hooks/useSearchResults';
 import getProductRoute from '../../../utils/nav/getProductRoute';
@@ -23,6 +23,7 @@ const SearchField = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLFormElement>(null);
   const [showOptions, setShowOptions] = useState(false);
+  const [searchParams] = useSearchParams();
   const isValidSearchTerm = searchTerm?.length >= 2;
   const navigate = useNavigate();
 
@@ -82,7 +83,7 @@ const SearchField = () => {
     e.preventDefault();
     const selectedDevice = searchResults[highlightedIndex]?.device;
     if (selectedDevice) {
-      navigate(getProductRoute(selectedDevice.id));
+      navigate(getProductRoute(selectedDevice.id, searchParams));
     }
   };
 
