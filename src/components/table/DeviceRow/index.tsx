@@ -1,6 +1,8 @@
+import classNames from 'classnames';
 import { Device } from '../../../providers/UIDBProvider/types';
 import getDeviceInfo from '../../../utils/device/getDeviceInfo';
 import DeviceImage from '../../misc/DeviceImage';
+import ProductLink from '../../misc/ProductLink';
 import styles from './styles.module.css';
 
 interface Props {
@@ -11,15 +13,22 @@ const DeviceRow = ({ device }: Props) => {
 
   return (
     <tr>
-      <td>
-        <DeviceImage
-          className={styles.deviceImage}
-          sizes="20px"
-          device={device}
-        />
+      <td colSpan={3}>
+        <ProductLink
+          id={device.id}
+          className={classNames(styles.link, styles.row)}
+        >
+          <DeviceImage
+            className={styles.deviceImage}
+            sizes="20px"
+            device={device}
+          />
+          <span className={styles.col}>{line}</span>
+          <span className={classNames(styles.deviceNameCol, styles.col)}>
+            {name}
+          </span>
+        </ProductLink>
       </td>
-      <td>{line}</td>
-      <td>{name}</td>
     </tr>
   );
 };
