@@ -2,6 +2,7 @@ import { FocusEventHandler, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router';
 import useProductLines from '../../../hooks/useProductLines';
 import Popover from '../../ui/Popover';
+import { PRODUCT_LINE_FILTER_KEY } from '../../../consts';
 import styles from './styles.module.css';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 
 const FilterPopover = ({ onClose }: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const selectedProductLines = searchParams.getAll('product_line');
+  const selectedProductLines = searchParams.getAll(PRODUCT_LINE_FILTER_KEY);
   const popoverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router';
 import FilterPopover from '../FilterPopover';
+import { PRODUCT_LINE_FILTER_KEY } from '../../../consts';
 import styles from './styles.module.css';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 
 const FilterButton = ({ className }: Props) => {
   const [searchParams] = useSearchParams();
-  const selectedProductLines = searchParams.getAll('product_line');
+  const selectedProductLines = searchParams.getAll(PRODUCT_LINE_FILTER_KEY);
   const [open, setOpen] = useState(false);
   const handleClick = () => setOpen((currentOpen) => !currentOpen);
   const hasProductLines = selectedProductLines.length > 0;
