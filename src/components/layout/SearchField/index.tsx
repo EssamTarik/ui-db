@@ -1,19 +1,10 @@
-import {
-  ChangeEventHandler,
-  FocusEventHandler,
-  FormEventHandler,
-  KeyboardEventHandler,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-import { useNavigate, useSearchParams } from 'react-router';
+import { useEffect, useRef, useState } from 'react';
 import SearchIcon from '../../ui/icons/Search';
 import useSearchResults, { MatchType } from '../../../hooks/useSearchResults';
-import getProductRoute from '../../../utils/nav/getProductRoute';
 import Popover from '../../ui/Popover';
 import styles from './styles.module.css';
 import SearchOption from './SearchOption';
+import useSearchFieldHandlers from './hooks/useSearchFIeldHandlers';
 
 const MAX_SEARCH_RESULTS = 20;
 
@@ -23,9 +14,7 @@ const SearchField = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLFormElement>(null);
   const [showOptions, setShowOptions] = useState(false);
-  const [searchParams] = useSearchParams();
   const isValidSearchTerm = searchTerm?.length >= 2;
-  const navigate = useNavigate();
 
   const searchResults = useSearchResults(
     searchTerm,
@@ -36,56 +25,16 @@ const SearchField = () => {
     setHighlightedIndex(0);
   }, [searchResults]);
 
-  const handleFocus = () => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-    setShowOptions(true);
-  };
-
-  const handleBlur: FocusEventHandler = (event) => {
-    if (
-      containerRef.current &&
-      containerRef.current.contains(event.relatedTarget as Node)
-    ) {
-      inputRef.current?.focus();
-      return;
-    }
-
-    setShowOptions(false);
-    setSearchTerm('');
-  };
-
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const handleKeyUp: KeyboardEventHandler = (e) => {
-    const minIndex = 0;
-    const maxIndex = searchResults.length - 1;
-    const nextIndex =
-      highlightedIndex === maxIndex ? minIndex : highlightedIndex + 1;
-    const prevIndex =
-      highlightedIndex === minIndex ? maxIndex : highlightedIndex - 1;
-
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      setHighlightedIndex(nextIndex);
-    }
-
-    if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      setHighlightedIndex(prevIndex);
-    }
-  };
-
-  const handleSubmit: FormEventHandler = (e) => {
-    e.preventDefault();
-    const selectedDevice = searchResults[highlightedIndex]?.device;
-    if (selectedDevice) {
-      navigate(getProductRoute(selectedDevice.id, searchParams));
-    }
-  };
+  const { handleSubmit, handleChange, handleFocus, handleBlur, handleKeyUp } =
+    useSearchFieldHandlers({
+      inputRef,
+      containerRef,
+      setShowOptions,
+      setSearchTerm,
+      searchResults,
+      highlightedIndex,
+      setHighlightedIndex,
+    });
 
   const hasSearchResults = searchResults.length > 0;
 

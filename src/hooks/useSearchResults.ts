@@ -8,7 +8,7 @@ export enum MatchType {
   SHORTNAME,
 }
 
-interface SearchResult {
+export interface SearchResult {
   device: Device;
   matchType: MatchType;
 }
