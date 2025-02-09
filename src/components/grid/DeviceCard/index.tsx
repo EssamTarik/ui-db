@@ -17,7 +17,7 @@ const DeviceCard = ({ device }: Props) => {
       <div className={styles.productImageContainer}>
         <DeviceImage
           className={styles.productImage}
-          sizes="155px"
+          sizes="85px"
           device={device}
         />
       </div>
