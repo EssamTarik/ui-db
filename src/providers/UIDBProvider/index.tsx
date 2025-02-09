@@ -52,6 +52,10 @@ const UIDBProvider = ({ children }: Props) => {
     fetchData();
   }, []);
 
+  if (error) {
+    throw new Error(error);
+  }
+
   return (
     <UIDBContext.Provider value={{ isFetching, error, data, indexedDevices }}>
       {children}

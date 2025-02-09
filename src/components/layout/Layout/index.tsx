@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router';
 import TopBar from '../TopBar';
+import { useUIDBContext } from '../../../providers/UIDBProvider/context';
 import styles from './styles.module.css';
 
 interface Props {
@@ -7,10 +8,18 @@ interface Props {
 }
 
 const Layout = ({ children }: Props) => {
+  const { isFetching } = useUIDBContext();
   return (
     <>
       <TopBar />
-      <main className={styles.mainContent}>{children ?? <Outlet />}</main>
+      {isFetching && (
+        <div className={styles.loading}>
+          <h1>Loading...</h1>
+        </div>
+      )}
+      {!isFetching && (
+        <main className={styles.mainContent}>{children ?? <Outlet />}</main>
+      )}
     </>
   );
 };
