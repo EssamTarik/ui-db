@@ -8,7 +8,7 @@
   justify-content: center;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .deviceGrid {
     justify-content: flex-start;
   }
