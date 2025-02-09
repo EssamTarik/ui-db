@@ -1,7 +1,7 @@
-import { Link } from 'react-router';
 import classNames from 'classnames';
 import getDeviceImageSrcSet from '../../utils/getDeviceImageSrcSet';
 import usePaginationData from '../../hooks/usePaginationData';
+import ProductLink from '../ProductLink';
 import styles from './styles.module.css';
 
 const ProductTable = () => {
@@ -25,8 +25,8 @@ const ProductTable = () => {
             return (
               <tr key={device.id}>
                 <td colSpan={3}>
-                  <Link
-                    to={`/product/${device.id}`}
+                  <ProductLink
+                    id={device.id}
                     className={classNames(styles.link, styles.row)}
                   >
                     <img
@@ -40,7 +40,7 @@ const ProductTable = () => {
                     >
                       {deviceName}
                     </span>
-                  </Link>
+                  </ProductLink>
                 </td>
               </tr>
             );

@@ -1,6 +1,6 @@
-import { Link } from 'react-router';
 import getDeviceImageSrcSet from '../../utils/getDeviceImageSrcSet';
 import usePaginationData from '../../hooks/usePaginationData';
+import ProductLink from '../ProductLink';
 import styles from './styles.module.css';
 
 const ProductGrid = () => {
@@ -18,8 +18,8 @@ const ProductGrid = () => {
         const deviceLine = device.line?.name;
 
         return (
-          <Link
-            to={`/product/${device.id}`}
+          <ProductLink
+            id={device.id}
             key={device.id}
             className={styles.productCard}
           >
@@ -35,7 +35,7 @@ const ProductGrid = () => {
               <p className={styles.deviceName}>{deviceName}</p>
               <p className={styles.deviceShortName}>{deviceShortName}</p>
             </div>
-          </Link>
+          </ProductLink>
         );
       })}
     </div>

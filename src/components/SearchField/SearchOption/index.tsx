@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router';
 import classNames from 'classnames';
+import ProductLink from '../../ProductLink';
 import styles from './styles.module.css';
 
 interface Props {
@@ -33,9 +33,9 @@ const SearchOption = ({
   const matchText = name.slice(0, highlightMatchLength);
 
   return (
-    <Link
+    <ProductLink
       ref={elementRef}
-      to={`/product/${id}`}
+      id={id}
       className={classNames(styles.searchOption, {
         [styles.highlighted]: highlighted,
       })}
@@ -50,7 +50,7 @@ const SearchOption = ({
       <span className={classNames(styles.shortName, styles.searchOptionLabel)}>
         {shortName}
       </span>
-    </Link>
+    </ProductLink>
   );
 };
 

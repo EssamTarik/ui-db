@@ -10,6 +10,7 @@ import {
 import { useNavigate } from 'react-router';
 import SearchIcon from '../ui/icons/Search';
 import useSearchResults, { MatchType } from '../../hooks/useSearchResults';
+import getProductRoute from '../../utils/nav/getProductRoute';
 import styles from './styles.module.css';
 import SearchOption from './SearchOption';
 
@@ -80,7 +81,7 @@ const SearchField = () => {
     e.preventDefault();
     const selectedDevice = searchResults[highlightedIndex]?.device;
     if (selectedDevice) {
-      navigate(`/product/${selectedDevice.id}`);
+      navigate(getProductRoute(selectedDevice.id));
     }
   };
 

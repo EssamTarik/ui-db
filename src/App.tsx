@@ -15,7 +15,7 @@ function App() {
           <Route path="/grid" Component={ProductGrid} />
         </Route>
         <Route element={<Layout />}>
-          <Route path="/product/:id" Component={DeviceDetails} />
+          <Route path="/products/:id" Component={DeviceDetails} />
         </Route>
       </Routes>
     </UIDBProvider>
